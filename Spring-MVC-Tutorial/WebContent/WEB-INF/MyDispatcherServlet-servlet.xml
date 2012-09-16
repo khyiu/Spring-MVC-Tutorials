@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 	
 	<!-- Enabling Spring beans auto-discovery -->
 	<context:component-scan base-package="controller" />
@@ -18,4 +20,26 @@
 		<property name="prefix" value="/WEB-INF/views/" /> 
 		<property name="suffix" value=".jsp" /> 
 	</bean>
+	
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/home.go" access="ROLE_REGISTERED_USER"/>	
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>		
+			<security:user-service>
+				<security:user name="user1" password="demo" authorities="ROLE_REGISTERED_USER" />
+				<security:user name="user2" password="demo" authorities="ROLE_FREE_USER" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+<!-- 	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="demo-security-user-service"/>
+	</security:authentication-manager>
+	
+	<security:user-service id="demo-security-user-service">
+		<security:user name="user1" authorities="ROLE_ADMIN, ROLE_BASIC, ROLE_PREMIUM" password="demo" />
+		<security:user name="user2" authorities="ROLE_BASIC" password="demo" />
+	</security:user-service> -->
 </beans>
