@@ -23,6 +23,7 @@
 	
 	<security:http auto-config="true">
 		<security:intercept-url pattern="/home.go" access="ROLE_REGISTERED_USER"/>	
+		<security:logout logout-success-url="/home.go"/>
 	</security:http>
 	
 	<security:authentication-manager>
@@ -33,13 +34,4 @@
 			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager>
-	
-<!-- 	<security:authentication-manager>
-		<security:authentication-provider user-service-ref="demo-security-user-service"/>
-	</security:authentication-manager>
-	
-	<security:user-service id="demo-security-user-service">
-		<security:user name="user1" authorities="ROLE_ADMIN, ROLE_BASIC, ROLE_PREMIUM" password="demo" />
-		<security:user name="user2" authorities="ROLE_BASIC" password="demo" />
-	</security:user-service> -->
 </beans>
