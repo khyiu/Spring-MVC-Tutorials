@@ -23,7 +23,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>		
+	</build>
 
 	<dependencies>
 		<dependency>
@@ -40,6 +40,17 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-version}</version>
+		</dependency>
+		<!-- Dependencies to use Spring security features -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework.security</groupId>
+    		<artifactId>spring-security-taglibs</artifactId>
+    		<version>${spring-version}</version>
 		</dependency>
 	</dependencies>
 </project>
