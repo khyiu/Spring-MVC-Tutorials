@@ -21,7 +21,8 @@
 	</bean>
 
 	<!-- use-expression=true allows you to define access rights using methods from SecurityExpressionRoot ...-->
-	<security:http auto-config="true" use-expressions="true">		
+	<security:http auto-config="true" use-expressions="true">	
+		<security:form-login login-page="/login.go" default-target-url="/home.go" authentication-failure-url="/login.go?errorLogin"/>	
 		<security:intercept-url pattern="/home.go" access="hasRole('ADMIN')" /> 
 		<security:logout logout-success-url="/home.go" />
 	</security:http>
